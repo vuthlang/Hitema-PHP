@@ -16,3 +16,16 @@ values ("Mario Bros.", "Mario Bros. is a 1983 arcade game developed and publishe
 ("A Plague Tale", "A Plague Tale: Innocence is an action-adventure stealth game developed by Asobo Studio and published by Focus Home Interactive. It was released for Windows, PlayStation 4 and Xbox One in May 2019. The game was made available on the cloud-based service Amazon Luna in November 2020.
 ", '2019-08-5', "https://upload.wikimedia.org/wikipedia/en/1/1d/A_Plague_Tale_cover_art.jpg", 39.99), 
 ("Metro Exodus", "Metro Exodus is a first-person shooter video game developed by 4A Games and published by Deep Silver. It is the third installment in the Metro video game trilogy based on Dmitry Glukhovsky's novels, following the events of Metro 2033 and Metro: Last Light.", '2019-04-09', "https://d25-a.sdn.cz/d_25/c_img_H_CV/jEPBjuO.jpeg", 30.99);
+
+
+// Partie authentification 
+
+create table videogames.admin
+(
+	id tinyint unsigned PRIMARY KEY auto_increment,
+	email varchar(100) unique, 
+	password varchar(100)
+)
+
+insert into videogames.admin(email, password)
+values ("admin@hitema.fr","b2647a7e9b8592254f7b2d86790263ac");  
