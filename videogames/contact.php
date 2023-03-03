@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+// inclusions 
+require_once '_inc/functions.php';
+require_once '_inc/header.php';
+require_once '_inc/nav.php';
 
 //récupération de données envoyées par le serveur
 $submissionDate = date_format((new DateTime)->setTimestamp($_SERVER['REQUEST_TIME']), 'd-m-Y H:i:s');
@@ -13,13 +19,11 @@ if (isset($_POST) && !empty($_POST)) {
         'message' => $message,
     ] = $_POST;
 }
-// inclusions 
-require_once '_inc/header.php';
-require_once '_inc/nav.php';
-require_once '_inc/functions.php';
+
+
 ?>
 
-<main>
+<div class="w-75 mx-auto">
 
     <h1 class="m-5 text-center">Contact</h1>
     <form method="post">
@@ -61,18 +65,16 @@ require_once '_inc/functions.php';
 
         <div class="text-center m-4">
             <button class="btn btn-primary" type="submit" name="submit">Submit</button>
-            <?php if (isLong($subject) === false || isLong($message) === false) {
-                echo "<p class='mt-4 text-danger'><b>You need to enter at least 10 characters (Subject & Message)</b></p>";
-            }
-            ?>
         </div>
     </form>
 
     <?php
+    if (isset($subject) && isLong($subject) === false || isset($message) && isLong($message) === false) {
+        echo "<p class='mt-4 text-danger text-center'><b>You need to enter at least 10 characters (Subject & Message)</b></p>";
+    }
 
-    if (isset($_POST) && !empty($_POST) && isEmail($email) && isLong($subject) != false && isLong($message) != false) { ?>
+    if (processContactForm()) { ?>
         <div class='m-2'>
-            <?php processContactForm(); ?>
             <h2 class='mt-4 mb-4'>Content of the Contact form</h2>
             <p>
                 <b>Firstname : </b> <?= $firstname ?>
@@ -96,8 +98,7 @@ require_once '_inc/functions.php';
     <?php
     }
     ?>
-
-</main>
+</div>
 
 <?php
 require_once '_inc/footer.php';

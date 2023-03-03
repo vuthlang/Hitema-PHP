@@ -10,7 +10,13 @@
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
                 <a class="nav-link active" aria-current="page" href="/login.php">Log in</a>
-
+                <a class="nav-link active" aria-current="page" href="/contact.php">Contact</a>
+                <?php
+                if (getSessionData('user')) { ?>
+                    <a class="nav-link active" aria-current="page" href="/logout.php">Logout</a>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>

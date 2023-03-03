@@ -1,7 +1,10 @@
 <?php
+session_start();
+
+var_dump($_SESSION);
+require_once '_inc/functions.php';
 require_once '_inc/header.php';
 require_once '_inc/nav.php';
-require_once 'functions.php';
 
 if (isset($_POST) && !empty($_POST)) {
     [
@@ -13,6 +16,7 @@ if (isset($_POST) && !empty($_POST)) {
 
 <div class="container w-50">
     <h1 class="m-4 text-center">Login</h1>
+
     <form method="post">
         <div class="form-group mt-2">
             <label>Email</label>
@@ -23,7 +27,20 @@ if (isset($_POST) && !empty($_POST)) {
             <input type="password" class="form-control" name="password" placeholder="Password">
         </div>
         <button type="submit" name="submit" class="btn btn-primary  mt-3">Submit</button>
-        <?php processLoginForm() ?>
+
+        <?php
+        processLoginForm();
+
+        if ($_SESSION['noticeLogin'] != null) { ?>
+            <div class="w-50 mx-auto my-5">
+                <?php
+                $notice = getSessionFlashMessage('noticeLogin');
+                echo "<p class='alert alert-danger'>$notice</p>"; ?>
+            </div>
+        <?php
+        }
+        ?>
+
     </form>
 </div>
 <?php

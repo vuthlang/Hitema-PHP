@@ -1,7 +1,9 @@
 <?php
+session_start();
+
+require_once 'functions.php';
 require_once '_inc/header.php';
 require_once '_inc/nav.php';
-require_once 'functions.php';
 
 $id = $_GET['id'];
 $game = getOneGame($id);
