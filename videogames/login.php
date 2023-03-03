@@ -30,7 +30,7 @@ if (isset($_POST) && !empty($_POST)) {
         <?php
         processLoginForm();
 
-        if ($_SESSION['noticeLogin'] != null) { ?>
+        if (isset($_SESSION['noticeLogin'])) { ?>
             <div class="w-50 mx-auto my-5">
                 <?php
                 $notice = getSessionFlashMessage('noticeLogin');

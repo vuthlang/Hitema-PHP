@@ -116,7 +116,7 @@ function processLoginForm(): void
         if (checkUser(getValues()['email'], getValues()['password'])) {
             $_SESSION['user'] = getValues()['email'];
             //echo "<p class='fw-bold text-success'>Authentication successful</p>";
-            header("Location: index.php");
+            header("Location: admin/index.php");
         } else {
             //echo "<p class='font-weight-bold text-danger'>Authentication failed</p>";
             $_SESSION['noticeLogin'] = "Incorrect credential(s)";
